@@ -17,19 +17,20 @@ public class MainActivity3 extends AppCompatActivity {
 
     private ActivityMain3Binding binding;
     private String x = "0";
+    private String way = "+";
     private int ans = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main3);
+        binding = ActivityMain3Binding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        binding = ActivityMain3Binding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+
 
         binding.Num1.setOnClickListener(view -> {
             if(x=="0"){
@@ -108,10 +109,18 @@ public class MainActivity3 extends AppCompatActivity {
             binding.Result.setText(String.valueOf(ans));
         });
         binding.Plus.setOnClickListener(view->{
-            ans += Integer.parseInt(x);
+            ans = calc(way,Integer.parseInt(x),ans);
             x = "0";
             binding.Result.setText(String.valueOf(ans));
         });
+    }
+
+    private int calc(String way,int x,int y){
+        switch (way){
+            case "+":
+                return x + y;
+        }
+        return 0;
     }
 
 }
