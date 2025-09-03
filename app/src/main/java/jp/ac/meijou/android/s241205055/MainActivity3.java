@@ -8,14 +8,16 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.Objects;
+
 import jp.ac.meijou.android.s241205055.databinding.ActivityMain3Binding;
 import jp.ac.meijou.android.s241205055.databinding.ActivityMainBinding;
 
 public class MainActivity3 extends AppCompatActivity {
 
     private ActivityMain3Binding binding;
-    private String x = "";
-    private int ans;
+    private String x = "0";
+    private int ans = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,14 +94,23 @@ public class MainActivity3 extends AppCompatActivity {
             binding.Result.setText(x);
         });
         binding.Num0.setOnClickListener(view -> {
-            if(x==""){
-                x = x + "";
-            }else{x = x + "0";}
+            if(x!=""&&x!="0"){
+                x = x + "0";
+            }
             binding.Result.setText(x);
         });
         binding.AC.setOnClickListener(view->{
             x = "0";
+            ans = 0;
             binding.Result.setText(x);
+        });
+        binding.Equal.setOnClickListener(view->{
+            binding.Result.setText(String.valueOf(ans));
+        });
+        binding.Plus.setOnClickListener(view->{
+            ans += Integer.parseInt(x);
+            x = "0";
+            binding.Result.setText(String.valueOf(ans));
         });
     }
 
