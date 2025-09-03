@@ -111,6 +111,7 @@ public class MainActivity3 extends AppCompatActivity {
         binding.Plus.setOnClickListener(view->{
             ans = calc(way,Integer.parseInt(x),ans);
             x = "0";
+            way = "+";
             binding.Result.setText(String.valueOf(ans));
         });
     }

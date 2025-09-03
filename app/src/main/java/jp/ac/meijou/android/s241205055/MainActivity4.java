@@ -1,5 +1,6 @@
 package jp.ac.meijou.android.s241205055;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -7,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import java.util.Optional;
 
 import jp.ac.meijou.android.s241205055.databinding.ActivityMain2Binding;
 import jp.ac.meijou.android.s241205055.databinding.ActivityMain4Binding;
@@ -27,9 +30,19 @@ public class MainActivity4 extends AppCompatActivity {
             return insets;
         });
 
-
-
         var editText = getIntent().getStringExtra("title");
         binding.textView4.setText(editText);
+
+        binding.button4.setOnClickListener(view->{
+            var intent = new Intent();
+            intent.putExtra("ret", "OK");
+            setResult(RESULT_OK, intent);
+            finish();
+        });
+
+        binding.button5.setOnClickListener(view->{
+            setResult(RESULT_CANCELED);
+            finish();
+        });
     }
 }
