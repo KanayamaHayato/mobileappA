@@ -11,6 +11,8 @@
         android:id="@+id/gistView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="text" />
+        android:text="text"
+        android:textSize="10sp"
+        android:typeface="monospace"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
